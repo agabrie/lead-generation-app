@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@source "../views";
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@theme {
+  --color-midnight: #434366;
+}
