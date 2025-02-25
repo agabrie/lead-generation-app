@@ -1,22 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { homeRoutes } from "@/router/home-routes";
+import { adminRoutes } from "@/router/admin-routes";
 
 const routes = [
-    {
-        path: "/",
-        component: () => getPage("Home"),
-    },
-    {
-        path: "/test",
-        component: () => getPage("Test"),
-    },
-    {
-        path:"/admin",
-        component:()=>getAdminPage("Dashboard"),
-    }
+    ...homeRoutes,
+    ...adminRoutes
 ];
 
-const getPage = (fileName) => import (`@/pages/${fileName}.vue`);
-const getAdminPage = (fileName) => import (`@/pages/admin/${fileName}.vue`);
 
 export default createRouter({
     history: createWebHistory(),
