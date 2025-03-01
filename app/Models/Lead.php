@@ -25,6 +25,7 @@ class Lead extends Model
         'address_line_2',
         'city',
         'province',
+        'country',
         'postal_code',
         'consent_email_marketing',
         'consent_ts_and_cs',

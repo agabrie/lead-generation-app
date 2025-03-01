@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address_line_2')->nullable();
             $table->string('city');
             $table->string('province');
+            $table->string('country');
             $table->string('postal_code');
             $table->boolean('consent_email_marketing');
             $table->boolean('consent_ts_and_cs');
