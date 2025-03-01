@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @source "../views";
 
-@theme {
-  --color-midnight: #434366;
+@theme static {
+  --color-midnight:#434366;
+  --color-sage:var(--color-green-400);
+  --color-primary: var(--color-midnight);
+  --color-secondary: var(--color-sage);
+  --color-success: #434366;
+  --color-error: #434366;
+  --color-warning: #434366;
 }

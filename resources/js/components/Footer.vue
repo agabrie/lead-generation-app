@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-midnight text-white px-5 md:px-15 py-5 flex justify-center">
+  <footer class="bg-primary text-white px-5 md:px-15 py-5 flex justify-center">
     <div class="max-w-screen-lg w-full flex flex-col gap-10 text-xs md:text-sm">
       <p class="text-center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius totam facere illum perspiciatis libero ipsam
