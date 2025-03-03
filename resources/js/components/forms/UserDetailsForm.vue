@@ -54,7 +54,7 @@
           regex-error="Invalid cellphone number"
         />
       </template>
-      <template v-if="detailsStep == 2" :key="addressKey">
+      <template v-if="detailsStep == 2">
         <vAddressInput
           :model-value="address.address_line_1"
           @update:model-value="handleAutocomplete"
@@ -113,7 +113,6 @@
       </div>
     </div>
     <template #call-to-actions>
-      {{ formValidity }}
       <div class="flex justify-center">
         <vButton rounded="full" color="secondary" :disabled="!hasValidDetails" @click="submitUserDetails">Submit
         </vButton>
@@ -129,7 +128,7 @@ import vTextInput from "@/components/vTextInput.vue";
 import vButton from "@/components/vButton.vue";
 import axios from "axios";
 import vAddressInput from "@/components/vAddressInput.vue";
-const detailsStep = ref(2);
+const detailsStep = ref(1);
 const REGEX_NAMES = /^([!]?(([A-Za-z]+)(\'|\-)?)+)([a-z])$/;
 const REGEX_EMAIL = /^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/i;
 const REGEX_PHONE_NUMBER = /^(0|\+27)[0-9]{9}/;

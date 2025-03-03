@@ -2,7 +2,19 @@
   <div>
       <h2>HOME</h2>
       <router-link class="underline" to="/test"> Take me to Test page </router-link>
-      <FormTooltip>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptate aut voluptatem pariatur ipsum numquam aliquid. Non praesentium numquam in?</FormTooltip>
+      <FormTooltip>
+        <div class="flex flex-col gap-2">
+        <h2 class="text-2xl text-center">
+          We just need a few details...
+        </h2>
+        <p class="text-center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptate aut voluptatem pariatur ipsum numquam aliquid. Non praesentium numquam in?
+        </p>
+        <p class="text-center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nesciunt.
+        </p>
+        </div>
+      </FormTooltip>
       <UserDetailsForm />
   </div>
 </template>
