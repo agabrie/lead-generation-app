@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+         <!-- add to env -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={!! $maps_api_key !!}&libraries=places&loading=async"></script>
         <title>Lead Generator</title>
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

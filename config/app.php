@@ -122,5 +122,8 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+    'google'=>[
+        'maps' => env('GOOGLE_MAPS_API_KEY'),
+    ]
 
 ];
