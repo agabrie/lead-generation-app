@@ -2,8 +2,18 @@
 export const adminRoutes = [
   {
       path:"/admin",
-      component:()=>getAdminPage("Dashboard"),
-  }
+      children:[
+        {
+          path:"",
+          component:()=>getAdminPage("Dashboard"),
+        },
+        {
+          path:"login",
+          component:()=>getAdminPage("Login"),
+        }
+      ]
+  },
+  
 ];
 
 const getAdminPage = (fileName) => import (`@/pages/admin/${fileName}.vue`);

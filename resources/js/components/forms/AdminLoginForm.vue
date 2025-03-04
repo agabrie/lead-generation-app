@@ -47,7 +47,7 @@ import vTextInput from "@/components/vTextInput.vue";
 import vButton from "@/components/vButton.vue";
 import axios from "axios";
 const REGEX_EMAIL = /^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/i;
-const REGEX_PASSWORD = /(\w){8,}/;
+const REGEX_PASSWORD = /(\S){8,}/;
 const formData = reactive({
   email: "",
   password: "",
@@ -58,8 +58,12 @@ const formValidity = reactive({
   password: false,
 });
 const submitAdminLogin = () => {
-  console.log("submitted admin login", formData)
-  axios.post('/api/login', formData);
+  axios.post('/api/login', formData).then(({data}) => {
+    if (data.token) {
+      sessionStorage.setItem("token", data.token);
+    }
+    window.location = '/admin';
+  }).catch((err)=>{});
 }
 const hasValidDetails = computed(() => {
   return formData.email && Object.values(formValidity).reduce((totalValidity, validity) => {

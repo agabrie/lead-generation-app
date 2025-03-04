@@ -1,12 +1,18 @@
 export const homeRoutes = [
   {
       path: "/",
-      component: () => getPage("Home"),
+      children:[
+        {
+          path:"",
+          component: () => getPage("Home"),
+        },
+        {
+          path: "test",
+          component: () => getPage("Test"),
+        },
+      ]
   },
-  {
-      path: "/test",
-      component: () => getPage("Test"),
-  },
+ 
 ];
 
 const getPage = (fileName) => import (`@/pages/${fileName}.vue`);
