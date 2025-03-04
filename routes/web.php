@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/admin/login', function(){
+Route::get('/admin/login', function(Request $request){
+    if ($request->user()) {
+        return redirect('/admin');
+    }
     return view('main');
 })->name('login');
 
