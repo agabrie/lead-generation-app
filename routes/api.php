@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LeadController;
 use App\Http\Middleware\AdminAuthentication;
+use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,11 @@ Route::post("/login",function(Request $request){
 });
 
 Route::get("/leads",function(Request $request){
-    return "<h1>Wow</h1>";
+    $leads = Lead::paginate(5);
+
+    return response()->json([
+        "leads"=>$leads,
+    ]);
 })->middleware(AdminAuthentication::class);
 
 Route::post('/lead', [LeadController::class,'createLead']);

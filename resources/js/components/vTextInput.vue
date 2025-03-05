@@ -1,39 +1,39 @@
 <template>
-  <div
-    class="flex flex-col gap-2 justify-center align-center w-full md:w-1/2 md:max-w-100"
-    :class="{
-      'md:flex-row':labelPosition === 'left',
-    }"
-  >
-    <label
-      v-if="!hideLabel"
-      for="name"
+    <div
+      class="flex flex-col gap-2 justify-center align-center w-full md:w-1/2 md:max-w-100"
       :class="{
-        'basis-1/3 flex items-center':labelPosition !=='top',
-        'md:justify-end md:text-end':labelAlign==='right',
-        'justify-start text-start':labelAlign==='left',
+        'md:flex-row':labelPosition === 'left',
       }"
     >
-      {{ label }}
-    </label>
-    <input
-      class="inline-block basis-2/3 p-2 bg-white rounded-lg"
-      :class="{
-        'border-1 border-error focus:outline-error': typeof error==='string',
-      }"
-      :id="id"
-      type="text"
-      :name="name"
-      :value="modelValue"
-      :placeholder="placeholder"
-      @input="handleInput"
-      @update="handleInput"
-      :required="required"
-    />
-  </div>
-  <div v-if="typeof error==='string'" class="text-error">
-    {{ error }}
-  </div>
+      <label
+        v-if="!hideLabel"
+        for="name"
+        :class="{
+          'basis-1/3 flex items-center':labelPosition !=='top',
+          'md:justify-end md:text-end':labelAlign==='right',
+          'justify-start text-start':labelAlign==='left',
+        }"
+      >
+        {{ label }}
+      </label>
+      <input
+        class="inline-block basis-2/3 p-2 bg-white rounded-lg"
+        :class="{
+          'border-1 border-error focus:outline-error': typeof error==='string',
+        }"
+        :id="id"
+        :type="type"
+        :name="name"
+        :value="modelValue"
+        :placeholder="placeholder"
+        @input="handleInput"
+        @update="handleInput"
+        :required="required"
+      />
+    </div>
+    <div v-if="typeof error==='string'" class="text-error">
+      {{ error }}
+    </div>
 </template>
 
 <script setup>
@@ -52,6 +52,7 @@ const props = defineProps({
   "required":{type:Boolean, default:false},
   "labelAlign":{type:String, default:"left"},
   "labelPosition":{type:String, default:"top"},
+  "type":{type:String, default:"text"},
 });
 watch(()=>props.modelValue, (value)=>{
   validateValue(value);

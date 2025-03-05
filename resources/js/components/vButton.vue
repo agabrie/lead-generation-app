@@ -1,5 +1,30 @@
 <template>
-  <button type="submit" class="focus:ring-4 font-medium text-sm px-5 py-2.5 focus:outline-none" :class="[roundedClass, buttonColors, buttonTextColors, disabled?'cursor-not-allowed':'cursor-pointer']" :disabled="disabled">
+  <router-link
+    v-if="type=='link'"
+    :to="to"
+    :class="[
+      'focus:ring-4 font-medium text-sm focus:outline-none',
+      buttonSize,
+      roundedClass,
+      buttonColors,
+      buttonTextColors,
+      disabled?'cursor-not-allowed':'cursor-pointer'
+    ]"
+    :disabled="disabled"
+  >
+    <slot />
+  </router-link>
+  <button v-else :type="type"
+    :class="[
+      'focus:ring-4 font-medium text-sm focus:outline-none',
+      buttonSize,
+      roundedClass,
+      buttonColors,
+      buttonTextColors,
+      disabled?'cursor-not-allowed':'cursor-pointer'
+    ]"
+  :disabled="disabled"
+  >
     <slot />
   </button>
 </template>
@@ -19,9 +44,21 @@
       type:String,
       default:"white"
     },
-    disabled:{
+    'disabled':{
       type:Boolean,
       default:false,
+    },
+    'size':{
+      type:String,
+      default:"regular",
+    },
+    'type':{
+      type:String,
+      default:"submit",
+    },
+    'to':{
+      type:String,
+      default:"/"
     }
   });
 
@@ -41,6 +78,13 @@
     black: "text-black", 
   };
 
+  const buttonSizes = {
+    regular: "px-5 py-2.5",
+    small: "py-1 px-2.5",
+  }
+  const buttonSize  = computed(()=>{
+    return buttonSizes[props.size];
+  })
   const roundedClass = computed(() => ({
     "rounded-lg": props.rounded && props.rounded !== "full",
     "rounded-full": props.rounded && props.rounded === "full",

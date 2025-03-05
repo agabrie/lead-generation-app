@@ -6,6 +6,7 @@
   >
     <div class="flex flex-col gap-4 items-center">
       <template v-if="detailsStep == 1">
+        <!-- v-tooltip.bottom="'bottom'" -->
         <vTextInput
           v-model="formData.first_name"
           name="first_name"
@@ -108,8 +109,7 @@
         />
       </template>
       <div class="flex justify-center gap-2">
-        <vButton rounded="full" color="secondary" :disabled="detailsStep == 1" @click="detailsStep = 1">1</vButton>
-        <vButton rounded="full" color="secondary" :disabled="detailsStep == 2" @click="detailsStep = 2">2</vButton>
+        <vFormPageControls :pages="2" v-model:current-page="detailsStep"/>
       </div>
     </div>
     <template #call-to-actions>
@@ -128,6 +128,7 @@ import vTextInput from "@/components/vTextInput.vue";
 import vButton from "@/components/vButton.vue";
 import axios from "axios";
 import vAddressInput from "@/components/vAddressInput.vue";
+import vFormPageControls from "@/components/vFormPageControls.vue";
 const detailsStep = ref(1);
 const REGEX_NAMES = /^([!]?(([A-Za-z]+)(\'|\-)?)+)([a-z])$/;
 const REGEX_EMAIL = /^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/i;

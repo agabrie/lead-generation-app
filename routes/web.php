@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/admin', function () {

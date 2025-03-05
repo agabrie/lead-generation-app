@@ -10,6 +10,10 @@ export const adminRoutes = [
         {
           path:"login",
           component:()=>getAdminPage("Login"),
+        },
+        {
+          path:"lead/:id",
+          component:()=>getAdminPage("Lead"),
         }
       ]
   },

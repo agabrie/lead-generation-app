@@ -1,7 +1,5 @@
 <template>
   <div>
-      <h2>HOME</h2>
-      <router-link class="underline" to="/test"> Take me to Test page </router-link>
       <FormTooltip>
         <div class="flex flex-col gap-2">
         <h2 class="text-2xl text-center">
