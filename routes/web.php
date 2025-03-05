@@ -3,9 +3,6 @@
 use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-Route::middleware('auth:sanctum')->get('/admin', function () {
-    return view('admin');
-});
 
 Route::get('/admin/login', function(Request $request){
     if ($request->user()) {
@@ -13,6 +10,10 @@ Route::get('/admin/login', function(Request $request){
     }
     return view('main');
 })->name('login');
+
+Route::middleware('auth:sanctum')->get('/admin/{admin_page?}', function () {
+    return view('admin');
+})->where('admin_page', '[\/\w\.-]*');;
 
 Route::get('/{vue_page?}', function () {
     return view('main', [
