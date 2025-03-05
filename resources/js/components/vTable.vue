@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-2 overflow-x-auto">
    <table class="w-full">
       <th v-for="field in formattedFields">
         {{ field.label }}

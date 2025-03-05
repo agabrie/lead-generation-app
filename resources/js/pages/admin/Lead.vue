@@ -5,8 +5,8 @@
     </div>
     <!-- {{ lead?.first_name }} -->
     <vCard v-if="lead" :title="lead.first_name" :description="lead.last_name">
-      <div class="flex flex-row gap-2">
-        <section>
+      <div class="flex flex-row gap-2 flex-wrap md:flex-nowrap">
+        <section class="w-full">
           <h2 class="text-2xl text-secondary">
             Info
           </h2>
@@ -14,8 +14,18 @@
           <vDetail label="Last Name">{{ lead.last_name }}</vDetail>
           <vDetail label="Email">{{ lead.email }}</vDetail>
           <vDetail label="Phone Number">{{ lead.phone_number }}</vDetail>
+          <p
+            class="px-2"
+            :class="{
+              'text-error':!lead.consent_email_marketing,
+              'text-success':lead.consent_email_marketing,
+            }"
+          >
+            {{ !!lead.consent_email_marketing?"Opted in to Email Marketing":"Did not opt in to marketing" }}
+          </p>
+
         </section>
-        <section>
+        <section  class="w-full">
           <h2 class="text-2xl text-secondary">
             Address
           </h2>

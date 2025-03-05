@@ -1,8 +1,10 @@
 <template>
   <Header />
   <router-view v-slot="{ Component, route }">
-    <div class="px-5 md:px-15 py-5" :key="route.name">
-      <component :is="Component" />
+    <div class="flex flex-col md:px-15 w-full justify-center items-center" :key="route.name">
+      <main class="px-5 md:px-0 py-5  w-full max-w-screen-lg">
+        <component :is="Component" />
+      </main>
     </div>
   </router-view>
   <Footer />

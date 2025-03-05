@@ -1,13 +1,14 @@
 <template>
     <div
-      class="flex flex-col gap-2 justify-center align-center w-full md:w-1/2 md:max-w-100"
+      class="relative flex flex-col gap-2 justify-center align-center w-full md:w-1/2 md:max-w-100"
       :class="{
         'md:flex-row':labelPosition === 'left',
+        'text-error':typeof error==='string'
       }"
     >
       <label
         v-if="!hideLabel"
-        for="name"
+        :for="name"
         :class="{
           'basis-1/3 flex items-center':labelPosition !=='top',
           'md:justify-end md:text-end':labelAlign==='right',
@@ -15,6 +16,8 @@
         }"
       >
         {{ label }}
+        <p :class="{'-right-5 text-xl px-1':true, 'text-secondary':typeof error!=='string','text-error':typeof error==='string'}">{{required?"*":""}}</p>
+
       </label>
       <input
         class="inline-block basis-2/3 p-2 bg-white rounded-lg"

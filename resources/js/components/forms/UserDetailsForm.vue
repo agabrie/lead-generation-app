@@ -54,6 +54,22 @@
           :regex="REGEX_PHONE_NUMBER"
           regex-error="Invalid cellphone number"
         />
+        <vCheckbox
+          v-model="formData.consent_email_marketing"
+          name="consent_email_marketing"
+          label="Do you consent to receiving marketing emails from us?"
+          label-align="left"
+          label-position="right"
+        />
+        <vCheckbox
+          v-model="formData.consent_ts_and_cs"
+          name="consent_ts_and_cs"
+          label="Do you agree to our Terms & conditions?"
+          label-align="left"
+          label-position="right"
+          required
+          v-model:error="formValidity.consent_ts_and_cs"
+        />
       </template>
       <template v-if="detailsStep == 2">
         <vAddressInput
@@ -129,6 +145,7 @@ import vButton from "@/components/vButton.vue";
 import axios from "axios";
 import vAddressInput from "@/components/vAddressInput.vue";
 import vFormPageControls from "@/components/vFormPageControls.vue";
+import vCheckbox from "@/components/vCheckbox.vue";
 const detailsStep = ref(1);
 const REGEX_NAMES = /^([!]?(([A-Za-z]+)(\'|\-)?)+)([a-z])$/;
 const REGEX_EMAIL = /^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/i;
@@ -146,8 +163,8 @@ const formData = reactive({
   last_name: "",
   email: "",
   phone_number: "",
-  consent_email_marketing: true,
-  consent_ts_and_cs: true,
+  consent_email_marketing: false,
+  consent_ts_and_cs: false,
 });
 
 const formValidity = reactive({
@@ -161,6 +178,7 @@ const formValidity = reactive({
   postal_code: false,
   province: false,
   country: false,
+  consent_ts_and_cs:false,
 });
 const submitUserDetails = () => {
   console.log("submitted user details", formData)

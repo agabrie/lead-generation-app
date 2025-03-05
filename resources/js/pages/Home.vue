@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
       <FormTooltip>
         <div class="flex flex-col gap-2">
         <h2 class="text-2xl text-center">
