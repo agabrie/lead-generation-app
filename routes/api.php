@@ -34,13 +34,8 @@ Route::post("/login",function(Request $request){
     ], Response::HTTP_UNAUTHORIZED);
 });
 
-Route::get("/leads",function(Request $request){
-    $leads = Lead::paginate(5);
-
-    return response()->json([
-        "leads"=>$leads,
-    ]);
-})->middleware(AdminAuthentication::class);
 
 Route::post('/lead', [LeadController::class,'createLead']);
+Route::get("/leads",[LeadController::class,'getPageOfLeads'])->middleware(AdminAuthentication::class);
+Route::get('/lead/{lead_id}', [LeadController::class,'getLead'])->middleware(AdminAuthentication::class);
 

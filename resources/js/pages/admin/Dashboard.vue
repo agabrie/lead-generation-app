@@ -16,7 +16,7 @@ import {useRoute} from "vue-router";
 const route=useRoute();
 
 let leadsData = ref(null);
-let page = ref(parseInt(route.query.page));
+let page = ref(parseInt(route.query.page || 1));
 onMounted(()=>{
   getLeadsPage(page.value);
 })

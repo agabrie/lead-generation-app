@@ -12,16 +12,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `
-                    @import "~/css/scss/_variables.scss";
-                    @import "~/css/scss/_mixins.scss";
-                `
-            }
-        }
-    },
     resolve: {
         alias: {
             vue: "vue/dist/vue.esm-bundler.js",

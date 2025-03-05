@@ -57,7 +57,7 @@
       default:"submit",
     },
     'to':{
-      type:String,
+      type:[String, Object],
       default:"/"
     }
   });

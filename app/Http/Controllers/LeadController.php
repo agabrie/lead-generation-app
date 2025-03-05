@@ -28,4 +28,20 @@ class LeadController extends Controller
         dispatch(new SendEmailJob($lead));
         return response()->json(["lead"=>$lead, "message"=>"Lead Generated"]);
     }
+
+    function getPageOfLeads(Request $request){
+        $leads = Lead::paginate(5);
+    
+        return response()->json([
+            "leads"=>$leads,
+        ]);
+    }
+
+    function getLead(Request $request){
+        $lead = Lead::find($request->lead_id);
+    
+        return response()->json([
+            "lead"=>$lead,
+        ]);
+    }
 }
